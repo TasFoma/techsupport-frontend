@@ -1,25 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Container } from '@mui/material';
+import EmployeesPage from './pages/EmployeesPage';
+import CoefficientsPage from './pages/CoefficientsPage';
+import Navigation from './components/Navigation';
+import ShiftsPage from './pages/ShiftsPage';
+import StatisticsPage from './pages/StatisticsPage';
+import SalaryPage from './pages/SalaryPage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navigation />
+      <Container maxWidth="lg" sx={{ mt: 4 }}>
+        <Routes>
+          <Route path="/" element={<EmployeesPage />} />
+          <Route path="/employees" element={<EmployeesPage />} />
+          <Route path="/coefficients" element={<CoefficientsPage />} />
+          <Route path="/shifts" element={<ShiftsPage />} />
+          <Route path="/statistics" element={<StatisticsPage />} />
+          <Route path="/salary" element={<SalaryPage />} />
+        </Routes>
+      </Container>
+    </Router>
   );
 }
 
